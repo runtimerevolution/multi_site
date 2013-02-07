@@ -1,0 +1,10 @@
+Users
+<ul>
+  <% @users.each do |user| %>
+  <li>
+    <%= link_to user.name, user_path(current_site, user) %>
+  </li>
+  <% end -%>
+
+  <%= link_to "New User", new_user_path %>
+</ul>
