@@ -1,5 +1,7 @@
 # MultiSite
 
+[![Build Status](https://travis-ci.org/runtimerevolution/multi_site.png?branch=master)](https://travis-ci.org/runtimerevolution/multi_site)
+
 MultiSite provides the ability to scope your models by tenant.
 MultiSite gem is very similar to multi-tenancy gems such as
 [acts_as_tenant](https://github.com/ErwinM/acts_as_tenant) but less strict on it's implementation.
