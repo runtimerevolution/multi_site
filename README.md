@@ -86,7 +86,7 @@ parameter, and all route helpers will use it transparently.
 ### With Your Views
 MultiSite provides a helper method called `current_site`. It can be used on views or controllers
 context and give us the current site selected by the application.
-```ruby
+```erb
 <% if current_site.present? %>
 	<p>Site Name: <%= current_site.name %></p>
 <% else %>
