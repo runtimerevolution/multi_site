@@ -90,7 +90,7 @@ context and give us the current site selected by the application.
 <% if current_site.present? %>
 	<p>Site Name: <%= current_site.name %></p>
 <% else %>
-	<p> Please you need to <%= link_to "login" "/login" %> first.
+	<p> Please you need to <%= link_to "login", "/login" %> first.
 <% end %>
 ```
 #### Security
