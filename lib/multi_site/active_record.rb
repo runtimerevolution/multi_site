@@ -20,8 +20,8 @@ module MultiSite
         end
 
         validates :site, :presence => true
-        scope :on_site,
-          -> { where(:site_id => MultiSite.current_site.try(:id)) }
+        scope :on_site,  -> { where(:site_id => MultiSite.current_site.try(:id)) }
+        scope :for_site, ->(site) { where(:site_id => site.try(:id)) }
         belongs_to :site, :class_name => "Site"
       end
 
