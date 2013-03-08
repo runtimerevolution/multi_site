@@ -3,7 +3,7 @@ module MultiSite
   class << self
 
     def current_site=(site)
-      Thread.current[:site_id] = site.id
+      Thread.current[:site_id] = site.try(:id)
     end
 
     def current_site
