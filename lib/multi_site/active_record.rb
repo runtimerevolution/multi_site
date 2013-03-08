@@ -1,14 +1,12 @@
 module MultiSite
 
   class << self
-
     def current_site=(site)
       Thread.current[:site_id] = site.try(:id)
     end
 
     def current_site
-      Thread.current[:site_id] ||= Site.active.first
-      Site.find(Thread.current[:site_id])
+      Site.find(Thread.current[:site_id]) if Thread.current[:site_id]
     end
   end
 
