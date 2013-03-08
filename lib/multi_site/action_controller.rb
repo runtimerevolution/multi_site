@@ -17,8 +17,11 @@ module MultiSite
     end
 
     def find_current_site
-      return if params[:multi_site].blank?
-      MultiSite.current_site = Site.find_by_url(params[:multi_site].to_s)
+      if params[:multi_site].blank?
+        MultiSite.current_site = nil
+      else
+        MultiSite.current_site = Site.find_by_url(params[:multi_site].to_s)
+      end
     end
 
   end
