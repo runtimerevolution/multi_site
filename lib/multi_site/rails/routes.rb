@@ -10,6 +10,6 @@ end
 
 class MultiSiteConstraints
   def matches?(request)
-    Site.exists?(:url => request.path_parameters[:multi_site])
+    Site.exists?(:id => request.path_parameters[:multi_site])
   end
 end
