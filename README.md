@@ -134,4 +134,8 @@ Thread.new {
 #RoadMap
 - make the site model name customizable
 
-This project rocks and uses MIT-LICENSE.
+# License
+Copyright © 2013 [Runtime Revolution](http://www.runtime-revolution.com), released under the MIT license.
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/26b54a588b4f5698a9d33228e4eac957 "githalytics.com")](http://githalytics.com/runtimerevolution/multi_site)
+
