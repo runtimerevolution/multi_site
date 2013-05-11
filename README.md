@@ -52,10 +52,10 @@ from current site:
 ```ruby
 class UsersController < ApplicationController
   def  index
-  	#fetch all the users
-  	@all_users = User.all
-  	#fetch all the users from current site
-  	@site_users = User.on_site
+    #fetch all the users
+    @all_users = User.all
+    #fetch all the users from current site
+    @site_users = User.on_site
     #fetch all the users from current site with a certain age
     @site_users = User.on_site.where(:age => 15)
   end
@@ -88,9 +88,9 @@ MultiSite provides a helper method called `current_site`. It can be used on view
 context and give us the current site selected by the application.
 ```erb
 <% if current_site.present? %>
-	<p>Site Name: <%= current_site.name %></p>
+  <p>Site Name: <%= current_site.name %></p>
 <% else %>
-	<p> Please you need to <%= link_to "login", "/login" %> first.
+  <p> Please you need to <%= link_to "login", "/login" %> first.
 <% end %>
 ```
 #### Security
@@ -109,6 +109,25 @@ class UsersController < ApplicationController
     unless current_user.site == current_site
       raise "Access Denied"
     end
+  end
+end
+```
+
+#### Cross site controllers
+
+You'll surely need cross site operations. We can get you there providing a macro that allows site switching:
+
+```ruby
+class Admin::AdminController < ApplicationController
+  cross_site_controller
+
+  def show
+    @admin_site = current_site
+  end
+
+  def switch_site
+    self.current_site = Site.find(params[:site_id])
+    redirect_to admin_admin_url, notice: "Switched to: #{current_site.url}"
   end
 end
 ```
@@ -138,4 +157,3 @@ Thread.new {
 Copyright © 2013 [Runtime Revolution](http://www.runtime-revolution.com), released under the MIT license.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/26b54a588b4f5698a9d33228e4eac957 "githalytics.com")](http://githalytics.com/runtimerevolution/multi_site)
-

@@ -23,6 +23,5 @@ module MultiSite
         MultiSite.current_site = Site.find_by_url(params[:multi_site].to_s)
       end
     end
-
   end
 end
