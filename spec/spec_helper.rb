@@ -15,10 +15,10 @@ Site.delete_all
 FactoryGirl.find_definitions
 
 RSpec.configure do |config|
-
   require 'rspec/expectations'
-  config.include RSpec::Matchers
 
+  config.include RSpec::Matchers
+  config.use_transactional_examples = true
   config.expect_with :rspec do |c|
     c.syntax = [:should]
   end
