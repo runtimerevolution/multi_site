@@ -132,6 +132,12 @@ class Admin::AdminController < ApplicationController
 end
 ```
 
+you can declare the default site with:
+
+```ruby
+MultiSite::Supra.default_site = Site.where(default: true).first
+```
+
 #### Threading
 MultiSite uses thread context to keep current site id saved for scopes. If you initializate
 new threads you need to copy the current site to the new thread in order to keep the
