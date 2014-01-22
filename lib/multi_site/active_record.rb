@@ -22,6 +22,8 @@ module MultiSite
         scope :on_site,  -> { where(:site_id => MultiSite.current_site.try(:id)) }
         scope :for_site, ->(site) { where(:site_id => site.try(:id)) }
         belongs_to :site, :class_name => "Site"
+
+        before_validation -> {self.site ||= MultiSite.current_site}, on: :create
       end
 
       def is_scoped_by_site?
