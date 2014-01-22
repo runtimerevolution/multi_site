@@ -1,7 +1,7 @@
 module ActionDispatch::Routing
   class Mapper
     def multi_site_scope(&block)
-      scope ':multi_site', :constraints => MultiSite::MultiSiteConstraints.new do
+      scope ':multi_site', as:'site', :constraints => MultiSite::MultiSiteConstraints.new do
         block.call
       end
     end
