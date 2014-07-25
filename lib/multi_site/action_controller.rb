@@ -20,7 +20,7 @@ module MultiSite
       if params[:multi_site].blank?
         MultiSite.current_site = nil
       else
-        MultiSite.current_site = Site.find_by(url: params[:multi_site].to_s)
+        MultiSite.current_site = Site.find_by_url(params[:multi_site].to_s)
       end
     end
   end

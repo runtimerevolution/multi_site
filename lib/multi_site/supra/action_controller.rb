@@ -68,7 +68,7 @@ module MultiSite
     def self.find_site(site)
       case site
       when String, Integer
-        Site.find(site)
+        Site.find_by_id(site)
       else
         site
       end
