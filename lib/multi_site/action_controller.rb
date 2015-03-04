@@ -12,6 +12,10 @@ module MultiSite
       MultiSite.current_site
     end
 
+    def current_site_id
+      MultiSite.current_site_id
+    end
+
     def in_site?
       current_site.present?
     end
@@ -20,7 +24,7 @@ module MultiSite
       if params[:multi_site].blank?
         MultiSite.current_site = nil
       else
-        MultiSite.current_site = Site.find_by_url(params[:multi_site].to_s)
+        MultiSite.current_site = Site.where(url: params[:multi_site]).first
       end
     end
   end
