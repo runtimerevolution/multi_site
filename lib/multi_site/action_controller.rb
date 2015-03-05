@@ -24,7 +24,7 @@ module MultiSite
       if params[:multi_site].blank?
         MultiSite.current_site = nil
       else
-        MultiSite.current_site = Site.where(url: params[:multi_site]).first
+        MultiSite.current_site = Site.where(:url => params[:multi_site]).first
       end
     end
   end
