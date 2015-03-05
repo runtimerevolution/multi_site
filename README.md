@@ -156,8 +156,10 @@ Thread.new {
 }
 ```
 
-#RoadMap
+# RoadMap
 - make the site model name customizable
+- make the param name entry customizable
+- add specs for Rails 3+. Only Rails 4+ are provided at the moment
 
 # License
 Copyright © 2013 [Runtime Revolution](http://www.runtime-revolution.com), released under the MIT license.
