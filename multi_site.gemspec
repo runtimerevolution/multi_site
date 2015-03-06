@@ -11,8 +11,10 @@ Gem::Specification.new do |s|
   s.files       = Dir["{lib}/**/*"]
   s.require_paths = %w(lib)
   s.test_files = Dir.glob("spec/**/*")
+
   # dependencies
-  s.add_dependency('rails', '>= 3.0')
+  s.add_dependency('rails', '>= 4.0')
+  s.add_dependency('request_store', '~> 1.1.0')
 
   s.add_development_dependency('rspec-rails')
   s.add_development_dependency('factory_girl')
