@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   # dependencies
   s.add_dependency('rails', '>= 4.0')
-  s.add_dependency('request_store', '~> 1.1.0')
+  s.add_dependency('request_store', '>= 1.0')
 
   s.add_development_dependency('rspec-rails')
   s.add_development_dependency('factory_girl')
