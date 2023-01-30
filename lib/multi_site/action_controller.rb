@@ -1,10 +1,16 @@
+# frozen_string_literal: true
+
 module MultiSite
-  #Controller mixin for multi-site management
+  # Controller mixin for multi-site management
   module ActionController
     extend ActiveSupport::Concern
 
     included do
-      prepend_before_filter :find_current_site
+      if Rails.version.to_i > 4
+        prepend_before_action :find_current_site
+      else
+        prepend_before_filter :find_current_site
+      end
       helper_method :current_site, :in_site?
     end
 
@@ -21,11 +27,7 @@ module MultiSite
     end
 
     def find_current_site
-      if params[:multi_site].blank?
-        MultiSite.current_site = nil
-      else
-        MultiSite.current_site = Site.where(:url => params[:multi_site]).first
-      end
+      MultiSite.current_site = params[:multi_site].blank? ? nil : Site.where(url: params[:multi_site]).first
     end
   end
 end

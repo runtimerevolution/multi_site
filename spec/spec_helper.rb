@@ -1,25 +1,11 @@
-# Configure Rails Envinronment
-ENV["RAILS_ENV"] = "test"
-
-require File.expand_path("../dummy/config/environment.rb",  __FILE__)
-require 'rspec/rails'
-require 'faker'
-# Run any available migration
-ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
-Rails.backtrace_cleaner.remove_silencers!
-
-require 'factory_girl'
-
-Site.delete_all
-
-FactoryGirl.find_definitions
-
 RSpec.configure do |config|
-  require 'rspec/expectations'
-
-  config.include RSpec::Matchers
-  config.use_transactional_examples = true
-  config.expect_with :rspec do |c|
-    c.syntax = [:should]
+  config.expect_with :rspec do |expectations|
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+
+  config.mock_with :rspec do |mocks|
+    mocks.verify_partial_doubles = true
+  end
+
+  config.shared_context_metadata_behavior = :apply_to_host_groups
 end
