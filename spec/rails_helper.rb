@@ -5,7 +5,8 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require 'faker'
 require 'factory_bot'
-require_relative "dummy.#{Rails.version.to_f}/config/environment"
+require 'database_cleaner'
+require_relative 'dummy/config/environment'
 require 'rspec/rails'
 
 begin
@@ -24,5 +25,14 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     FactoryBot.find_definitions
+  end
+
+  config.before(:all) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.after(:all) do
+    DatabaseCleaner.clean
   end
 end

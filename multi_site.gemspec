@@ -19,10 +19,10 @@ Gem::Specification.new do |s|
   s.add_dependency('rails', '>= 4.0')
   s.add_dependency('request_store', '>= 1.0')
 
+  s.add_development_dependency('appraisal')
   s.add_development_dependency('database_cleaner')
   s.add_development_dependency('factory_bot_rails')
   s.add_development_dependency('faker')
-  s.add_development_dependency('gemika')
   s.add_development_dependency('rspec-rails')
   s.add_development_dependency('sqlite3')
 end
