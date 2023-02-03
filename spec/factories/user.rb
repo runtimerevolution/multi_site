@@ -1,8 +1,8 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
-    association :site, :factory => :site
-    name Faker::Name.name
+    association :site, factory: :site
+    login { Faker::Name.name }
   end
 end

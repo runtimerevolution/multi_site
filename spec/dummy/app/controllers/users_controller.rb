@@ -1,20 +1,11 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-
   def index
-    @users = User.on_site
+    render json: { ola: 'mundo' }
   end
 
-  def new
-    @user = User.new
+  def show
+    render json: { site: current_site }
   end
-
-  def create
-    @user = User.new(params[:user])
-    if @user.valid? and @user.save
-      redirect_to users_path(current_site.url)
-    else
-      render :action => :new
-    end
-  end
-
 end

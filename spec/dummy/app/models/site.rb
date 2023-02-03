@@ -1,5 +1,2 @@
-class Site < ActiveRecord::Base
-  has_many :users
-
-  validates :url, presence: true, uniqueness: true
+class Site < ApplicationRecord
 end

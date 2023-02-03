@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module MultiSite
+  # Module Supra
   module Supra
     mattr_reader :default_site
     # accessor to declare the default site
@@ -37,6 +40,7 @@ module MultiSite
     module ActionController
       extend ActiveSupport::Concern
 
+      # Module Macro
       module Macro
         # The class macro to declare a supra site controller
         def cross_site_controller
@@ -45,7 +49,11 @@ module MultiSite
       end
 
       included do
-        prepend_before_filter :set_current_site
+        if Rails.version.to_i > 4
+          prepend_before_action :set_current_site
+        else
+          prepend_before_filter :set_current_site
+        end
         helper_method :current_site
       end
 
@@ -65,6 +73,7 @@ module MultiSite
     end
 
     private
+
     def self.find_site(site)
       case site
       when String, Integer

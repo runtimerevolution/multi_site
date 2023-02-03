@@ -1,6 +1,6 @@
-require 'factory_girl'
+# frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   sequence :url do |n|
     "url_#{n}"
   end

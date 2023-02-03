@@ -96,14 +96,14 @@ context and give us the current site selected by the application.
 #### Security
 MultiSite doesn't provide any security features. You have the responsability to implement them.
 For example, to guarantee that a user doesn't have access to unauthorized tenants, you can
-create a before_filter action that checks if the user's site is the same as
+create a before_action action that checks if the user's site is the same as
 current_site:
 
 ```ruby
 
 class UsersController < ApplicationController
 
-  before_filter :check_site_access
+  before_action :check_site_access
   #...
   def check_site_access
     unless current_user.site == current_site
@@ -118,16 +118,18 @@ end
 You'll surely need cross site operations. We can get you there providing a macro that allows site switching:
 
 ```ruby
-class Admin::AdminController < ApplicationController
-  cross_site_controller
+module Admin
+  class AdminController < ApplicationController
+    cross_site_controller
 
-  def show
-    @admin_site = current_site
-  end
+    def show
+      @admin_site = current_site
+    end
 
-  def switch_site
-    self.current_site = Site.find(params[:site_id])
-    redirect_to admin_admin_url, notice: "Switched to: #{current_site.url}"
+    def switch_site
+      self.current_site = Site.find(params[:site_id])
+      redirect_to admin_admin_url, notice: "Switched to: #{current_site.url}"
+    end
   end
 end
 ```
@@ -159,7 +161,6 @@ Thread.new {
 # RoadMap
 - make the site model name customizable
 - make the param name entry customizable
-- add specs for Rails 3+. Only Rails 4+ are provided at the moment
 
 # License
 Copyright © 2013 [Runtime Revolution](http://www.runtime-revolution.com), released under the MIT license.
